@@ -1018,7 +1018,9 @@ def _send_email_via_mail_app(output_path: Path, year: int, month: int, trips: li
     KEYCHAIN_SERVICE = "businesstrip_gmail"
 
     # ── 取得 Gmail App 密碼（環境變數優先，其次 macOS Keychain）──
-    password = os.environ.get("GMAIL_APP_PASSWORD")
+    password = os.environ.get("GMAIL_APP_PASSWORD", "").strip()
+    # Gmail App 密碼去除所有空白（含 \xa0），只保留字母數字
+    password = "".join(c for c in password if c.isalnum()) or None
     if not password and sys.platform == "darwin":
         try:
             result = subprocess.run(
