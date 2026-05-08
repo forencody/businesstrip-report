@@ -1007,16 +1007,11 @@ def main():
 def _send_email_via_mail_app(output_path: Path, year: int, month: int, trips: list):
     """
     用 Gmail SMTP 寄送報表通知。
-    密碼從 macOS Keychain 讀取（帳號：foren0516@gmail.com）。
-    首次使用前請執行：
-        security add-generic-password -a foren0516@gmail.com -s businesstrip_gmail -w <App密碼>
+    密碼從環境變數 GMAIL_APP_PASSWORD 或 macOS Keychain 讀取。
     """
     import smtplib
     import subprocess
-    from email.mime.multipart import MIMEMultipart
-    from email.mime.text import MIMEText
-    from email.mime.base import MIMEBase
-    from email import encoders
+    from email.message import EmailMessage
 
     SENDER   = "foren0516@gmail.com"
     RECIPIENT = "foren@cc-sustain.com"
@@ -1040,25 +1035,21 @@ def _send_email_via_mail_app(output_path: Path, year: int, month: int, trips: li
         print(f'   security add-generic-password -a {SENDER} -s {KEYCHAIN_SERVICE} -w <App密碼>')
         return
 
-    # ── 組裝信件 ──
-    from email.header import Header
-
+    # ── 組裝信件（使用 EmailMessage，原生支援 UTF-8）──
     subject = f"【自動通知】{year}年{month}月 差旅報支申請單 已產生"
     body = f"{year}年{month}月份的差旅報支申請單已經自動產生，請參閱附件。"
 
-    msg = MIMEMultipart()
+    msg = EmailMessage()
     msg["From"] = SENDER
     msg["To"] = RECIPIENT
-    msg["Subject"] = Header(subject, "utf-8")
-    msg.attach(MIMEText(body, "plain", "utf-8"))
+    msg["Subject"] = subject
+    msg.set_content(body)
 
     with open(output_path, "rb") as f:
-        part = MIMEBase("application", "octet-stream")
-        part.set_payload(f.read())
-    encoders.encode_base64(part)
-    part.add_header("Content-Disposition", "attachment",
-                    filename=Header(output_path.name, "utf-8").encode())
-    msg.attach(part)
+        msg.add_attachment(f.read(),
+                           maintype="application",
+                           subtype="octet-stream",
+                           filename=output_path.name)
 
     # ── 透過 Gmail SMTP 寄出 ──
     try:
@@ -1066,7 +1057,7 @@ def _send_email_via_mail_app(output_path: Path, year: int, month: int, trips: li
             smtp.ehlo()
             smtp.starttls()
             smtp.login(SENDER, password)
-            smtp.sendmail(SENDER, RECIPIENT, msg.as_bytes())
+            smtp.send_message(msg)
         print(f"\n📧 報表已寄至 {RECIPIENT}（寄件人：{SENDER}）")
     except Exception as e:
         print(f"\n⚠  Email 寄送失敗：{e}")
