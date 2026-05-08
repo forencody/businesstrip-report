@@ -1035,21 +1035,26 @@ def _send_email_via_mail_app(output_path: Path, year: int, month: int, trips: li
         print(f'   security add-generic-password -a {SENDER} -s {KEYCHAIN_SERVICE} -w <App密碼>')
         return
 
-    # ── 組裝信件（使用 EmailMessage，原生支援 UTF-8）──
-    subject = f"【自動通知】{year}年{month}月 差旅報支申請單 已產生"
-    body = f"{year}年{month}月份的差旅報支申請單已經自動產生，請參閱附件。"
+    # ── 組裝信件 ──
+    import email.policy
 
-    msg = EmailMessage()
+    subject = f"[Auto] {year}-{month:02d} businesstrip report"
+    body = (f"{year}年{month}月份的差旅報支申請單已經自動產生，請參閱附件。\n"
+            f"附件檔名：{output_path.name}")
+
+    msg = EmailMessage(policy=email.policy.SMTP)
     msg["From"] = SENDER
     msg["To"] = RECIPIENT
     msg["Subject"] = subject
-    msg.set_content(body)
+    msg.set_content(body, charset="utf-8")
 
+    # 附件用 ASCII 檔名避免編碼問題
+    attach_name = f"businesstrip_{year}_{month:02d}.xlsx"
     with open(output_path, "rb") as f:
         msg.add_attachment(f.read(),
                            maintype="application",
                            subtype="octet-stream",
-                           filename=output_path.name)
+                           filename=attach_name)
 
     # ── 透過 Gmail SMTP 寄出 ──
     try:
