@@ -1059,12 +1059,11 @@ def _send_email_via_mail_app(output_path: Path, year: int, month: int, trips: li
             smtp.ehlo()
             smtp.starttls()
             smtp.login(SENDER, password)
-            smtp.send_message(msg)
+            # 直接傳 bytes，避免 sendmail 內部的 .encode('ascii') 報錯
+            smtp.sendmail(SENDER, [RECIPIENT], msg.as_bytes())
         print(f"\n📧 報表已寄至 {RECIPIENT}（寄件人：{SENDER}）")
     except Exception as e:
-        import traceback
         print(f"\n⚠  Email 寄送失敗：{e}")
-        traceback.print_exc()
 
 
 if __name__ == "__main__":
