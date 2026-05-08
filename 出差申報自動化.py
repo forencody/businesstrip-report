@@ -1041,21 +1041,23 @@ def _send_email_via_mail_app(output_path: Path, year: int, month: int, trips: li
         return
 
     # ── 組裝信件 ──
-    subject = f"【自動通知】{year}年{month}月 差旅報支申請單 已產生"
+    from email.header import Header
 
+    subject = f"【自動通知】{year}年{month}月 差旅報支申請單 已產生"
     body = f"{year}年{month}月份的差旅報支申請單已經自動產生，請參閱附件。"
 
     msg = MIMEMultipart()
     msg["From"] = SENDER
     msg["To"] = RECIPIENT
-    msg["Subject"] = subject
+    msg["Subject"] = Header(subject, "utf-8")
     msg.attach(MIMEText(body, "plain", "utf-8"))
 
     with open(output_path, "rb") as f:
         part = MIMEBase("application", "octet-stream")
         part.set_payload(f.read())
     encoders.encode_base64(part)
-    part.add_header("Content-Disposition", "attachment", filename=("utf-8", "", output_path.name))
+    part.add_header("Content-Disposition", "attachment",
+                    filename=Header(output_path.name, "utf-8").encode())
     msg.attach(part)
 
     # ── 透過 Gmail SMTP 寄出 ──
