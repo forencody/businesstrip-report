@@ -1062,7 +1062,9 @@ def _send_email_via_mail_app(output_path: Path, year: int, month: int, trips: li
             smtp.send_message(msg)
         print(f"\n📧 報表已寄至 {RECIPIENT}（寄件人：{SENDER}）")
     except Exception as e:
+        import traceback
         print(f"\n⚠  Email 寄送失敗：{e}")
+        traceback.print_exc()
 
 
 if __name__ == "__main__":
