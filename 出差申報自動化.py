@@ -1036,17 +1036,14 @@ def _send_email_via_mail_app(output_path: Path, year: int, month: int, trips: li
         return
 
     # ── 組裝信件 ──
-    import email.policy
-
     subject = f"[Auto] {year}-{month:02d} businesstrip report"
-    body = (f"{year}年{month}月份的差旅報支申請單已經自動產生，請參閱附件。\n"
-            f"附件檔名：{output_path.name}")
+    body = f"Report for {year}-{month:02d} generated. See attachment."
 
-    msg = EmailMessage(policy=email.policy.SMTP)
+    msg = EmailMessage()
     msg["From"] = SENDER
     msg["To"] = RECIPIENT
     msg["Subject"] = subject
-    msg.set_content(body, charset="utf-8")
+    msg.set_content(body)
 
     # 附件用 ASCII 檔名避免編碼問題
     attach_name = f"businesstrip_{year}_{month:02d}.xlsx"
