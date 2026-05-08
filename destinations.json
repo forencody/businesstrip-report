@@ -1,0 +1,378 @@
+{
+  "settings": {
+    "calendar_keyword": "陳峙霖",
+    "person_name": "陳峙霖",
+    "car_brand": "Tesla",
+    "car_number": "REA-8655",
+    "start_point": "台南",
+    "company_address": "台南市北區開元路457號",
+    "hsr_mileage": 33,
+    "default_work_reason": "工廠輔導",
+    "km_rate": 8,
+    "meal_outside_tainan": 400,
+    "meal_inside_tainan": 250,
+    "google_maps_api_key": "AIzaSyDGzLTz3-iDUvu9htq7I2J9fTpnSBTBjP8"
+  },
+  "filters": {
+    "online_keywords": [
+      "線上",
+      "Teams",
+      "Zoom",
+      "Meet",
+      "Google Meet",
+      "視訊",
+      "遠端"
+    ],
+    "internal_location_keywords": [
+      "會議室",
+      "辦公室",
+      "樓",
+      "1-8",
+      "室",
+      "公司",
+      "成創",
+      "GHG辦公"
+    ],
+    "skip_event_types": [
+      "請假",
+      "休假",
+      "補休",
+      "出差前往",
+      "出差返回"
+    ],
+    "overseas_keywords": [
+      "越南",
+      "日本",
+      "新加坡",
+      "泰國",
+      "曼谷",
+      "海外",
+      "出國",
+      "中國",
+      "上海",
+      "北京",
+      "深圳",
+      "香港",
+      "韓國",
+      "首爾",
+      "馬來西亞",
+      "吉隆坡",
+      "印尼",
+      "菲律賓",
+      "美國",
+      "歐洲"
+    ]
+  },
+  "destinations": {
+    "南港": {
+      "city": "台北市南港區",
+      "use_hsr": true,
+      "mileage": 33,
+      "inside_tainan": false
+    },
+    "內湖": {
+      "city": "台北市內湖區",
+      "use_hsr": true,
+      "mileage": 33,
+      "inside_tainan": false
+    },
+    "士林": {
+      "city": "台北市士林區",
+      "use_hsr": true,
+      "mileage": 33,
+      "inside_tainan": false
+    },
+    "台北": {
+      "city": "台北市",
+      "use_hsr": true,
+      "mileage": 33,
+      "inside_tainan": false
+    },
+    "新北": {
+      "city": "新北市",
+      "use_hsr": true,
+      "mileage": 33,
+      "inside_tainan": false
+    },
+    "桃園": {
+      "city": "桃園市",
+      "use_hsr": true,
+      "mileage": 33,
+      "inside_tainan": false
+    },
+    "新竹": {
+      "city": "新竹市",
+      "use_hsr": true,
+      "mileage": 33,
+      "inside_tainan": false
+    },
+    "新竹龜山": {
+      "city": "新竹縣龜山鄉",
+      "use_hsr": true,
+      "mileage": 60,
+      "inside_tainan": false
+    },
+    "龜山": {
+      "city": "新竹縣龜山鄉",
+      "use_hsr": true,
+      "mileage": 60,
+      "inside_tainan": false
+    },
+    "苗栗": {
+      "city": "苗栗縣",
+      "use_hsr": true,
+      "mileage": 33,
+      "inside_tainan": false
+    },
+    "台中": {
+      "city": "台中市",
+      "use_hsr": true,
+      "mileage": 33,
+      "inside_tainan": false
+    },
+    "彰化": {
+      "city": "彰化縣",
+      "use_hsr": true,
+      "mileage": 33,
+      "inside_tainan": false
+    },
+    "嘉義": {
+      "city": "嘉義市",
+      "use_hsr": true,
+      "mileage": 33,
+      "inside_tainan": false
+    },
+    "宜蘭": {
+      "city": "宜蘭縣",
+      "use_hsr": true,
+      "mileage": 33,
+      "inside_tainan": false
+    },
+    "花蓮": {
+      "city": "花蓮縣",
+      "use_hsr": true,
+      "mileage": 33,
+      "inside_tainan": false
+    },
+    "台東": {
+      "city": "台東縣",
+      "use_hsr": true,
+      "mileage": 33,
+      "inside_tainan": false
+    },
+    "基隆": {
+      "city": "基隆市",
+      "use_hsr": true,
+      "mileage": 33,
+      "inside_tainan": false
+    },
+    "楠梓": {
+      "city": "高雄市楠梓區",
+      "use_hsr": false,
+      "mileage": 78,
+      "inside_tainan": false
+    },
+    "左營": {
+      "city": "高雄市左營區",
+      "use_hsr": false,
+      "mileage": 0,
+      "inside_tainan": false
+    },
+    "仁武": {
+      "city": "高雄市仁武區",
+      "use_hsr": false,
+      "mileage": 0,
+      "inside_tainan": false
+    },
+    "永安": {
+      "city": "高雄市永安區",
+      "use_hsr": false,
+      "mileage": 0,
+      "inside_tainan": false
+    },
+    "高雄": {
+      "city": "高雄市",
+      "use_hsr": false,
+      "mileage": 102,
+      "inside_tainan": false
+    },
+    "屏東": {
+      "city": "屏東縣屏東市",
+      "use_hsr": false,
+      "mileage": 0,
+      "inside_tainan": false
+    },
+    "永康": {
+      "city": "台南市永康區",
+      "use_hsr": false,
+      "mileage": 10,
+      "inside_tainan": true
+    },
+    "仁德": {
+      "city": "台南市仁德區",
+      "use_hsr": false,
+      "mileage": 0,
+      "inside_tainan": true
+    },
+    "歸仁": {
+      "city": "台南市歸仁區",
+      "use_hsr": false,
+      "mileage": 0,
+      "inside_tainan": true
+    },
+    "新市": {
+      "city": "台南市新市區",
+      "use_hsr": false,
+      "mileage": 0,
+      "inside_tainan": true
+    },
+    "善化": {
+      "city": "台南市善化區",
+      "use_hsr": false,
+      "mileage": 0,
+      "inside_tainan": true
+    },
+    "安南": {
+      "city": "台南市安南區",
+      "use_hsr": false,
+      "mileage": 26,
+      "inside_tainan": true
+    },
+    "東區": {
+      "city": "台南市東區",
+      "use_hsr": false,
+      "mileage": 8,
+      "inside_tainan": true
+    },
+    "北區": {
+      "city": "台南市北區",
+      "use_hsr": false,
+      "mileage": 0,
+      "inside_tainan": true
+    },
+    "台南市": {
+      "city": "台南市",
+      "use_hsr": false,
+      "mileage": 0,
+      "inside_tainan": true
+    }
+  },
+  "companies": {
+    "亞東": {
+      "district": "南港",
+      "full_name": "亞東科技"
+    },
+    "日月光": {
+      "district": "楠梓",
+      "full_name": "日月光半導體"
+    },
+    "國聯": {
+      "district": "桃園",
+      "full_name": "國聯科技"
+    },
+    "富合": {
+      "district": "永康",
+      "full_name": "富合公司"
+    },
+    "訊凱": {
+      "district": "新竹龜山",
+      "full_name": "訊凱國際"
+    },
+    "金蜂": {
+      "district": "永安",
+      "full_name": "台灣金蜂",
+      "mileage": 60
+    },
+    "台灣金蜂": {
+      "district": "永安",
+      "full_name": "台灣金蜂"
+    },
+    "威健": {
+      "district": "內湖",
+      "full_name": "威健集團"
+    },
+    "威健集團": {
+      "district": "內湖",
+      "full_name": "威健集團"
+    },
+    "康舒": {
+      "district": "桃園",
+      "full_name": "康舒科技"
+    },
+    "瀛華": {
+      "district": "桃園",
+      "full_name": "瀛華電腦"
+    },
+    "台泥": {
+      "district": "台北",
+      "full_name": "台灣水泥"
+    },
+    "台灣水泥": {
+      "district": "台北",
+      "full_name": "台灣水泥"
+    },
+    "中鋼": {
+      "district": "高雄",
+      "full_name": "中國鋼鐵"
+    },
+    "台達電": {
+      "district": "桃園",
+      "full_name": "台達電子"
+    },
+    "台積電": {
+      "district": "新竹",
+      "full_name": "台灣積體電路"
+    },
+    "聯發科": {
+      "district": "新竹",
+      "full_name": "聯發科技"
+    },
+    "友達": {
+      "district": "新竹",
+      "full_name": "友達光電"
+    },
+    "群創": {
+      "district": "新竹",
+      "full_name": "群創光電"
+    },
+    "奇美": {
+      "district": "永康",
+      "full_name": "奇美實業"
+    },
+    "南亞": {
+      "district": "台北",
+      "full_name": "南亞塑膠"
+    },
+    "台塑": {
+      "district": "台北",
+      "full_name": "台灣塑膠"
+    },
+    "長榮": {
+      "district": "台北",
+      "full_name": "長榮集團"
+    },
+    "恆耀": {
+      "district": "桃園",
+      "full_name": "恆耀國際"
+    },
+    "綠舞": {
+      "district": "宜蘭",
+      "full_name": "綠舞日式渡假飯店"
+    },
+    "集思": {
+      "district": "台北",
+      "full_name": "集思北科大會議中心"
+    },
+    "集思北科大": {
+      "district": "台北",
+      "full_name": "集思北科大會議中心"
+    }
+  },
+  "work_reason_map": {
+    "驗廠": "驗廠",
+    "視察": "工廠視察",
+    "教育訓練": "教育訓練",
+    "查證": "輔導查證",
+    "on-site": "現場輔導"
+  }
+}

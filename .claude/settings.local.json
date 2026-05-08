@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(osascript -e 'tell application \"\"Terminal\"\":*)",
+      "Bash(osascript:*)",
+      "Bash(python3 -m py_compile \"/Users/cody/Documents/Claude/Projects/出差申報進化/出差申報自動化.py\")",
+      "Bash(python3 -c \"import anthropic; print\\(''已安裝'', anthropic.__version__\\)\")",
+      "Bash(pip3 install:*)",
+      "Bash(open \"https://console.anthropic.com/settings/keys\")",
+      "Bash(python3 -c \":*)",
+      "Bash(python3 -c \"import ast; ast.parse\\(open\\(''出差申報自動化.py''\\).read\\(\\)\\); print\\(''OK''\\)\")",
+      "Bash(python 出差申報自動化.py 2026 3)",
+      "Bash(python3 出差申報自動化.py 2026 3)",
+      "Bash(/usr/bin/python3 出差申報自動化.py 2026 3)",
+      "Bash(chmod +x \"/Users/cody/Documents/Claude/Projects/出差申報進化/run_monthly.sh\")",
+      "Bash(launchctl unload:*)"
+    ]
+  }
+}

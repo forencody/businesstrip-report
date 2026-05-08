@@ -1,0 +1,52 @@
+name: 每月差旅報表
+
+on:
+  schedule:
+    # 每月 1 日 01:00 UTC = 台灣時間 09:00
+    - cron: '0 1 1 * *'
+  workflow_dispatch:
+    inputs:
+      year:
+        description: '年份（留空 = 上個月）'
+        required: false
+      month:
+        description: '月份（留空 = 上個月）'
+        required: false
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 取出程式碼
+        uses: actions/checkout@v4
+
+      - name: 設定 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: 安裝套件
+        run: pip install -r requirements.txt
+
+      - name: 還原 Google OAuth token
+        run: echo "${{ secrets.TOKEN_PICKLE_B64 }}" | base64 -d > token.pickle
+
+      - name: 執行報表產生器
+        env:
+          CREDENTIALS_JSON: ${{ secrets.CREDENTIALS_JSON }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: |
+          if [ -n "${{ github.event.inputs.year }}" ] && [ -n "${{ github.event.inputs.month }}" ]; then
+            python 出差申報自動化.py ${{ github.event.inputs.year }} ${{ github.event.inputs.month }}
+          else
+            python 出差申報自動化.py
+          fi
+
+      - name: 上傳報表（備份用）
+        uses: actions/upload-artifact@v4
+        with:
+          name: 差旅報表
+          path: '*.xlsx'
+          retention-days: 90
