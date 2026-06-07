@@ -1,4 +1,6 @@
 credentials.json
 token.pickle
+token.pickle.bak_*
 *.pyc
 __pycache__/
+~$*
